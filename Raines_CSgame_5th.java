@@ -36,7 +36,7 @@ public class Raines_CSgame_5th extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		Pane root = new Pane();
 		Scene scene = new Scene(root,1100,675);
-		primaryStage.setTitle("Battle Of Cast 1912");
+		primaryStage.setTitle("Battle Of Cast 1912!!");
 		primaryStage.setScene(scene);
 		new Menu(root,scene);
 		primaryStage.show();
@@ -66,6 +66,7 @@ public class Raines_CSgame_5th extends Application {
 
 		Text gameText = new Text();
 
+		int i = 0;
 		public String[] text = new String[10];
 
 		public Game(Pane root,Scene scene) {
@@ -80,7 +81,10 @@ public class Raines_CSgame_5th extends Application {
 				try (InputStream is1 = Files.newInputStream(
 						Paths.get("C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/713039e6-7c91-4704-8877-1be252deac99.png"))) {
 
-					text[0] = "Welcome To Cast Tech i hope you enjoy your self";
+					text[0] = "Welcome To Cast Tech i hope you enjoy your self.";
+					text[1] = "Your first class of the day is Spainsh 2! ";
+					text[2] = "You better get going you are almost late its 8:25!";
+					text[3] = "Follow cast_memes";
 
 					Rectangle fadeRect = new Rectangle(1100, 675);
 					fadeRect.setFill(Color.BLACK);
@@ -111,10 +115,10 @@ public class Raines_CSgame_5th extends Application {
 					bottomRect.setOpacity(0.4);
 					bottomRect.setTranslateY(400);
 
-					Rectangle textRect = new Rectangle(800, 225);
-					textRect.setFill(Color.BLACK);
-					textRect.setTranslateX(200);
-					textRect.setTranslateY(425);
+//					Rectangle textRect = new Rectangle(800, 225);
+//					textRect.setFill(Color.BLACK);
+//					textRect.setTranslateX(200);
+//					textRect.setTranslateY(425);
 
 					gameText.setText(text[0]);
 					gameText.setFill(Color.WHITE);
@@ -122,31 +126,40 @@ public class Raines_CSgame_5th extends Application {
 					gameText.setTranslateX(225);
 					gameText.setTranslateY(450);
 
-					Rectangle charRect = new Rectangle(150, 75);
-					charRect.setFill(Color.BLACK);
-					charRect.setTranslateX(50);
-					charRect.setTranslateY(425);
+//					Rectangle charRect = new Rectangle(150, 75);
+//					charRect.setFill(Color.BLACK);
+//					charRect.setTranslateX(165);
+//					charRect.setTranslateY(450);
 
-					Button nextLine = new Button("Off the Screen Lamao");
-					nextLine.setTranslateX(-100);
-					nextLine.setTranslateY(-100);
-					nextLine.setDefaultButton(true);
+//					Button nextLine = new Button("Off the Screen Lamao");
+//					nextLine.setTranslateX(-100);
+//					nextLine.setTranslateY(-100);
+//					nextLine.setDefaultButton(true);
+					scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
-					nextLine.setOnAction(event -> {
-
-						FadeTransition fadeout1 = new FadeTransition(Duration.seconds(0.35), fadeRect);
-						fadeout1.setFromValue(0);
-						fadeout1.setToValue(1);
-
-						fadeout1.setOnFinished(evt -> {
-							Gameplay(root);
-							root.getChildren().removeAll(img,img1, bottomRect, textRect, charRect, gameText, nextLine,
-									fadeRect);
-						});
-						fadeout1.play();
+						@Override
+						public void handle(KeyEvent E) {
+							if(E.getCode()== KeyCode.ENTER) {
+								i++;
+								
+								gameText.setText(text[i]);
+							}
+							
+						}
+					
+					
 					});
+					//nextLine.setOnAction(event -> {
+					/*
+					 * FadeTransition fadeout1 = new FadeTransition(Duration.seconds(0.35),
+					 * fadeRect); fadeout1.setFromValue(0); fadeout1.setToValue(1);
+					 * 
+					 * fadeout1.setOnFinished(evt -> { Gameplay(root);
+					 * root.getChildren().removeAll(img,img1, bottomRect, textRect, charRect,
+					 * gameText, fadeRect); }); fadeout1.play(); });
+					 */
 
-					root.getChildren().addAll(img,img1, bottomRect, textRect, charRect, gameText, nextLine, fadeRect);
+					root.getChildren().addAll(img,img1, bottomRect,  gameText, fadeRect);
 				}
 			} catch (IOException e) {
 
@@ -460,7 +473,7 @@ public class Raines_CSgame_5th extends Application {
 			Rectangle rect = new Rectangle(1100, 675);
 			rect.setFill(Color.BLACK);
 
-			Text text = new Text("Intro");
+			Text text = new Text("Before The Battle Of 1912!");
 			text.setFill(Color.BLACK);
 			text.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
 			text.setTranslateX(475);
