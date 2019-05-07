@@ -1,9 +1,4 @@
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.application.Application;
@@ -11,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,15 +26,16 @@ public class Raines_CSgame_5th extends Application {
 	public static int plays = 0;
 	public boolean playingGameYes;
 
+	Pane root = new Pane();
+	Scene scene = new Scene(root, 1100, 675);
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Pane root = new Pane();
-		Scene scene = new Scene(root,1100,675);
 		primaryStage.setTitle("Battle Of Cast 1912!!");
 		primaryStage.setScene(scene);
-		new Menu(root,scene);
+		new Menu();
 		primaryStage.show();
-		
+
 		Player CoolCat = new Player(10, 10, 100, null);
 
 		if (playingGameYes == true) {
@@ -49,8 +44,6 @@ public class Raines_CSgame_5th extends Application {
 
 				@Override
 				public void handle(KeyEvent e) {
-
-					String input = e.getCode().toString();
 
 					if (e.getCode() == KeyCode.A) {
 
@@ -67,120 +60,256 @@ public class Raines_CSgame_5th extends Application {
 		Text gameText = new Text();
 
 		int i = 0;
+		int i1 = 0;
+		int i2 = 0;
+		int i3 = 0;
+		
 		public String[] text = new String[10];
+		public String[] text1 = new String[10];
+		public String[] text2 = new String[10];
+		public String[] text3 = new String[10];
+		public Game() {
 
-		public Game(Pane root,Scene scene) {
-
-			Intro(root,scene);
+			Intro();
 		}
 
-		public void Intro(Pane root,Scene scene) {
+		public void Intro() {
 
-			try (InputStream is = Files.newInputStream(
-					Paths.get("C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/goodmemes3.jpg"))) {
-				try (InputStream is1 = Files.newInputStream(
-						Paths.get("C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/713039e6-7c91-4704-8877-1be252deac99.png"))) {
+			text[0] = "Welcome To Cast Tech i hope you enjoy your self.";
+			text[1] = "Your first class of the day is Spainsh 2! ";
+			text[2] = "You better get going you are almost late its 8:25!";
+			text[3] = "Follow cast_memes";
 
-					text[0] = "Welcome To Cast Tech i hope you enjoy your self.";
-					text[1] = "Your first class of the day is Spainsh 2! ";
-					text[2] = "You better get going you are almost late its 8:25!";
-					text[3] = "Follow cast_memes";
+			Image is = new Image("file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/goodmemes3.jpg");
+			Image is1 = new Image(
+					"file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/713039e6-7c91-4704-8877-1be252deac99.png");
 
-					Rectangle fadeRect = new Rectangle(1100, 675);
-					fadeRect.setFill(Color.BLACK);
+			Rectangle fadeRect = new Rectangle(1100, 675);
+			fadeRect.setFill(Color.BLACK);
 
-					FadeTransition fadeout = new FadeTransition(Duration.seconds(0.25), fadeRect);
-					fadeout.setFromValue(1);
-					fadeout.setToValue(0);
-					fadeRect.setVisible(true);
-					fadeout.play();
+			FadeTransition fadeout = new FadeTransition(Duration.seconds(0.25), fadeRect);
+			fadeout.setFromValue(1);
+			fadeout.setToValue(0);
+			fadeRect.setVisible(true);
+			fadeout.play();
 
-					ImageView img = new ImageView(new Image(is));
-					img.setFitWidth(1100);
-					img.setFitHeight(675);
-					
-					ImageView img1 = new ImageView(new Image(is1));
-					img1.setFitWidth(300);
-					img1.setFitHeight(300);
-					img1.setTranslateX(800);
+			ImageView img = new ImageView(is);
+			img.setFitWidth(1100);
+			img.setFitHeight(675);
 
-					FadeTransition fadeout2 = new FadeTransition(Duration.seconds(2), img1);
-					fadeout2.setFromValue(0);
-					fadeout2.setToValue(1);
-					fadeout2.play();
+			ImageView img1 = new ImageView(is1);
+			img1.setFitWidth(300);
+			img1.setFitHeight(300);
+			img1.setTranslateX(800);
 
-					
-					Rectangle bottomRect = new Rectangle(1100, 275);
-					bottomRect.setFill(Color.BLACK);
-					bottomRect.setOpacity(0.4);
-					bottomRect.setTranslateY(400);
+			FadeTransition fadeout2 = new FadeTransition(Duration.seconds(2), img1);
+			fadeout2.setFromValue(0);
+			fadeout2.setToValue(1);
+			fadeout2.play();
 
-//					Rectangle textRect = new Rectangle(800, 225);
-//					textRect.setFill(Color.BLACK);
-//					textRect.setTranslateX(200);
-//					textRect.setTranslateY(425);
+			Rectangle bottomRect = new Rectangle(1100, 275);
+			bottomRect.setFill(Color.BLACK);
+			bottomRect.setOpacity(0.4);
+			bottomRect.setTranslateY(400);
 
-					gameText.setText(text[0]);
-					gameText.setFill(Color.WHITE);
-					gameText.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
-					gameText.setTranslateX(225);
-					gameText.setTranslateY(450);
+			gameText.setText(text[0]);
+			gameText.setFill(Color.WHITE);
+			gameText.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
+			gameText.setTranslateX(225);
+			gameText.setTranslateY(450);
 
 //					Rectangle charRect = new Rectangle(150, 75);
 //					charRect.setFill(Color.BLACK);
 //					charRect.setTranslateX(165);
 //					charRect.setTranslateY(450);
 
-//					Button nextLine = new Button("Off the Screen Lamao");
-//					nextLine.setTranslateX(-100);
-//					nextLine.setTranslateY(-100);
-//					nextLine.setDefaultButton(true);
-					scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
-						@Override
-						public void handle(KeyEvent E) {
-							if(E.getCode()== KeyCode.ENTER) {
-								i++;
-								
-								gameText.setText(text[i]);
-							}
-							
-						}
-					
-					
-					});
-					//nextLine.setOnAction(event -> {
-					/*
-					 * FadeTransition fadeout1 = new FadeTransition(Duration.seconds(0.35),
-					 * fadeRect); fadeout1.setFromValue(0); fadeout1.setToValue(1);
-					 * 
-					 * fadeout1.setOnFinished(evt -> { Gameplay(root);
-					 * root.getChildren().removeAll(img,img1, bottomRect, textRect, charRect,
-					 * gameText, fadeRect); }); fadeout1.play(); });
-					 */
+				@Override
+				public void handle(KeyEvent E) {
+					if (E.getCode() == KeyCode.ENTER) {
+						i++;
 
-					root.getChildren().addAll(img,img1, bottomRect,  gameText, fadeRect);
+						gameText.setText(text[i]);
+					}
+					if (i == 5) {
+						Gameplay();
+						root.getChildren().removeAll(img, img1, bottomRect, gameText, fadeRect);
+						i = 0;
+					}
+
 				}
-			} catch (IOException e) {
 
-				System.out.println("Cannot find Image");
-			}
+			});
+			root.getChildren().addAll(img, img1, bottomRect, gameText, fadeRect);
 		}
 
-		public void Gameplay(Pane root) {
+		public void Gameplay() {
 
 			playingGameYes = true;
+			
+			text1[0] = "Welcome To Cast Tech i hope you enjoy your self.";
+			text1[1] = "Your first class of the day is Spainsh 2! ";
+			text1[2] = "You better get going you are almost late its 8:25!";
+			text1[3] = "Follow cast_memes";
 
+			Image is = new Image("file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/goodmemes3.jpg");
 			Rectangle fadeRect = new Rectangle(1100, 675);
+
 			fadeRect.setFill(Color.BLACK);
+
+			ImageView img = new ImageView(is);
+			img.setFitWidth(1100);
+			img.setFitHeight(675);
+			
+			Rectangle bottomRect1 = new Rectangle(1100, 275);
+			bottomRect1.setFill(Color.BLACK);
+			bottomRect1.setOpacity(0.4);
+			bottomRect1.setTranslateY(400);
 
 			FadeTransition fadeout = new FadeTransition(Duration.seconds(0.35), fadeRect);
 			fadeout.setFromValue(1);
 			fadeout.setToValue(0);
 			fadeout.play();
+			
+			Text gameText = new Text();
+			gameText.setText(text[0]);
+			gameText.setFill(Color.WHITE);
+			gameText.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
+			gameText.setTranslateX(225);
+			gameText.setTranslateY(450);
+			
+			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
-			root.getChildren().addAll(fadeRect);
+				@Override
+				public void handle(KeyEvent E) {
+					if (E.getCode() == KeyCode.ENTER) {
+						i1++;
+
+						gameText.setText(text[i1]);
+					}
+					if (i1 == 5) {
+						Gameplay();
+						root.getChildren().removeAll(img, gameText, bottomRect1, fadeRect);
+						i1 = 0;
+					}
+
+				}
+
+			});
+			root.getChildren().addAll(img, gameText, bottomRect1, fadeRect);
 		}
+		public void Gameplay1() {
+
+			playingGameYes = true;
+			
+			text2[0] = "Welcome To Cast Tech i hope you enjoy your self.";
+			text2[1] = "Your first class of the day is Spainsh 2! ";
+			text2[2] = "You better get going you are almost late its 8:25!";
+			text2[3] = "Follow cast_memes";
+
+			Image is = new Image("file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/goodmemes3.jpg");
+			Rectangle fadeRect = new Rectangle(1100, 675);
+
+			fadeRect.setFill(Color.BLACK);
+
+			ImageView img = new ImageView(is);
+			img.setFitWidth(1100);
+			img.setFitHeight(675);
+			
+			Rectangle bottomRect1 = new Rectangle(1100, 275);
+			bottomRect1.setFill(Color.BLACK);
+			bottomRect1.setOpacity(0.4);
+			bottomRect1.setTranslateY(400);
+
+			FadeTransition fadeout = new FadeTransition(Duration.seconds(0.35), fadeRect);
+			fadeout.setFromValue(1);
+			fadeout.setToValue(0);
+			fadeout.play();
+			
+			Text gameText = new Text();
+			gameText.setText(text[0]);
+			gameText.setFill(Color.WHITE);
+			gameText.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
+			gameText.setTranslateX(225);
+			gameText.setTranslateY(450);
+			
+			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+				@Override
+				public void handle(KeyEvent E) {
+					if (E.getCode() == KeyCode.ENTER) {
+						i2++;
+
+						gameText.setText(text[i2]);
+					}
+					if (i2 == 5) {
+						Gameplay();
+						root.getChildren().removeAll(img, gameText, bottomRect1, fadeRect);
+						i2 = 0;
+					}
+
+				}
+
+			});
+			root.getChildren().addAll(img, gameText, bottomRect1, fadeRect);
+		}
+		public void Gameplay2() {
+
+			playingGameYes = true;
+			
+			text3[0] = "Welcome To Cast Tech i hope you enjoy your self.";
+			text3[1] = "Your first class of the day is Spainsh 2! ";
+			text3[2] = "You better get going you are almost late its 8:25!";
+			text3[3] = "Follow cast_memes";
+
+			Image is = new Image("file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/goodmemes3.jpg");
+			Rectangle fadeRect = new Rectangle(1100, 675);
+
+			fadeRect.setFill(Color.BLACK);
+
+			ImageView img = new ImageView(is);
+			img.setFitWidth(1100);
+			img.setFitHeight(675);
+			
+			Rectangle bottomRect1 = new Rectangle(1100, 275);
+			bottomRect1.setFill(Color.BLACK);
+			bottomRect1.setOpacity(0.4);
+			bottomRect1.setTranslateY(400);
+
+			FadeTransition fadeout = new FadeTransition(Duration.seconds(0.35), fadeRect);
+			fadeout.setFromValue(1);
+			fadeout.setToValue(0);
+			fadeout.play();
+			
+			Text gameText = new Text();
+			gameText.setText(text[0]);
+			gameText.setFill(Color.WHITE);
+			gameText.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
+			gameText.setTranslateX(225);
+			gameText.setTranslateY(450);
+			
+			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+				@Override
+				public void handle(KeyEvent E) {
+					if (E.getCode() == KeyCode.ENTER) {
+						i3++;
+
+						gameText.setText(text[i3]);
+					}
+					if (i3 == 5) {
+						Gameplay();
+						root.getChildren().removeAll(img, gameText, bottomRect1, fadeRect);
+						i3 = 0;
+					}
+
+				}
+
+			});
+			root.getChildren().addAll(img, gameText, bottomRect1, fadeRect);
+		}
+		
 	}
 
 	class Player extends Rectangle {
@@ -270,121 +399,115 @@ public class Raines_CSgame_5th extends Application {
 
 	class Menu {
 
-		public Menu(Pane root,Scene scene) {
+		public Menu() {
 
-			try (InputStream is = Files.newInputStream(
-					Paths.get("C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/memed-io-output.jpeg"))) {
-				try (InputStream is1 = Files.newInputStream(Paths
-						.get("C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/memed-io-output.jpeg"))) {
+			Image is = new Image(
+					"file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/memed-io-output.jpeg");
+			Image is1 = new Image(
+					"file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/memed-io-output.jpeg");
 
-					Text version = new Text("Ver. 9.7 and still not working");
-					version.setFill(Color.WHITE);
-					version.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 20));
-					version.setStroke(Color.BLACK);
-					version.setStrokeWidth(0.5);
-					version.setTranslateX(800);
-					version.setTranslateY(60);
+			Text version = new Text("Ver. 9.7 and still not working");
+			version.setFill(Color.WHITE);
+			version.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 20));
+			version.setStroke(Color.BLACK);
+			version.setStrokeWidth(0.5);
+			version.setTranslateX(800);
+			version.setTranslateY(60);
 
-					Rectangle fadeRect = new Rectangle(1100, 675);
-					fadeRect.setFill(Color.BLACK);
+			Rectangle fadeRect = new Rectangle(1100, 675);
+			fadeRect.setFill(Color.BLACK);
 
-					FadeTransition fadeout = new FadeTransition(Duration.seconds(1.5), fadeRect);
-					fadeout.setFromValue(1);
-					fadeout.setToValue(0);
-					fadeout.setOnFinished(evt -> {
+			FadeTransition fadeout = new FadeTransition(Duration.seconds(1.5), fadeRect);
+			fadeout.setFromValue(1);
+			fadeout.setToValue(0);
+			fadeout.setOnFinished(evt -> {
 
-						root.getChildren().remove(fadeRect);
-					});
-					fadeout.play();
+				root.getChildren().remove(fadeRect);
+			});
+			fadeout.play();
 
-					ImageView img = new ImageView(new Image(is));
-					img.setFitWidth(1100);
-					img.setFitHeight(675);
+			ImageView img = new ImageView(is);
+			img.setFitWidth(1100);
+			img.setFitHeight(675);
 
-					ImageView img1 = new ImageView(new Image(is1));
-					img1.setFitWidth(300);
-					img1.setFitHeight(300);
-					img1.setTranslateX(800);
+			ImageView img1 = new ImageView(is1);
+			img1.setFitWidth(300);
+			img1.setFitHeight(300);
+			img1.setTranslateX(800);
 
-					Rectangle bg = new Rectangle(1100, 200);
-					bg.setFill(Color.WHITE);
-					bg.setOpacity(0.4);
-					bg.setTranslateY(475);
+			Rectangle bg = new Rectangle(1100, 200);
+			bg.setFill(Color.WHITE);
+			bg.setOpacity(0.4);
+			bg.setTranslateY(475);
 
-					// Rectangle mbdr = new Rectangle(200, 160);
-					// mbdr.setFill(null);
-					// mbdr.setStroke(Color.BLACK);
-					// mbdr.setStrokeWidth(2);
-					// mbdr.setTranslateX(100);
-					// mbdr.setTranslateY(300);
+			// Rectangle mbdr = new Rectangle(200, 160);
+			// mbdr.setFill(null);
+			// mbdr.setStroke(Color.BLACK);
+			// mbdr.setStrokeWidth(2);
+			// mbdr.setTranslateX(100);
+			// mbdr.setTranslateY(300);
 
-					Rectangle hbdr = new Rectangle(50, 20);
-					hbdr.setFill(null);
-					hbdr.setStroke(Color.BLACK);
-					hbdr.setStrokeWidth(2);
-					hbdr.setTranslateX(10);
-					hbdr.setTranslateY(650);
+			Rectangle hbdr = new Rectangle(50, 20);
+			hbdr.setFill(null);
+			hbdr.setStroke(Color.BLACK);
+			hbdr.setStrokeWidth(2);
+			hbdr.setTranslateX(10);
+			hbdr.setTranslateY(650);
 
-					Title title = new Title("The Battle Of CAST");
-					title.setTranslateX(335);
-					title.setTranslateY(100);
+			Title title = new Title("The Battle Of CAST");
+			title.setTranslateX(335);
+			title.setTranslateY(100);
 
-					MenuItem itemStart = new MenuItem("NEW GAME");
-					itemStart.setTranslateX(75);
-					itemStart.setTranslateY(595);
+			MenuItem itemStart = new MenuItem("NEW GAME");
+			itemStart.setTranslateX(75);
+			itemStart.setTranslateY(595);
 
-					ContinueItem contBtn = new ContinueItem("CONTINUE");
-					contBtn.setTranslateX(330);
-					contBtn.setTranslateY(595);
+			ContinueItem contBtn = new ContinueItem("CONTINUE");
+			contBtn.setTranslateX(330);
+			contBtn.setTranslateY(595);
 
-					MenuItem itemOptions = new MenuItem("OPTIONS");
-					itemOptions.setTranslateX(575);
-					itemOptions.setTranslateY(595);
+			MenuItem itemOptions = new MenuItem("OPTIONS");
+			itemOptions.setTranslateX(575);
+			itemOptions.setTranslateY(595);
 
-					MenuItem itemExit = new MenuItem("EXIT");
-					itemExit.setTranslateX(825);
-					itemExit.setTranslateY(595);
+			MenuItem itemExit = new MenuItem("EXIT");
+			itemExit.setTranslateX(825);
+			itemExit.setTranslateY(595);
 
-					HelpButton helpBtn = new HelpButton("HELP");
-					helpBtn.setTranslateX(10);
-					helpBtn.setTranslateY(650);
+			HelpButton helpBtn = new HelpButton("HELP");
+			helpBtn.setTranslateX(10);
+			helpBtn.setTranslateY(650);
 
-					Rectangle fullScrn = new Rectangle(1100, 675);
-					fullScrn.setFill(Color.BLACK);
-					fullScrn.setVisible(false);
+			Rectangle fullScrn = new Rectangle(1100, 675);
+			fullScrn.setFill(Color.BLACK);
+			fullScrn.setVisible(false);
 
-					itemExit.setOnMouseClicked(event -> System.exit(0));
+			itemExit.setOnMouseClicked(event -> System.exit(0));
 
-					itemOptions.setOnMouseClicked(event -> System.out.println("Options: No functionality yet!"));
+			itemOptions.setOnMouseClicked(event -> System.out.println("Options: No functionality yet!"));
 
-					helpBtn.setOnMouseClicked(event -> System.out.println("Help: No functionality yet!"));
+			helpBtn.setOnMouseClicked(event -> System.out.println("Help: No functionality yet!"));
 
-					contBtn.setOnMouseClicked(
-							event -> System.out.println("Not yet supported in this version of the game!"));
+			contBtn.setOnMouseClicked(event -> System.out.println("Not yet supported in this version of the game!"));
 
-					itemStart.setOnMouseClicked(event -> {
+			itemStart.setOnMouseClicked(event -> {
 
-						FadeTransition ft = new FadeTransition(Duration.seconds(2.5), fullScrn);
-						ft.setFromValue(0);
-						ft.setToValue(1);
-						fullScrn.setVisible(true);
+				FadeTransition ft = new FadeTransition(Duration.seconds(2.5), fullScrn);
+				ft.setFromValue(0);
+				ft.setToValue(1);
+				fullScrn.setVisible(true);
 
-						ft.setOnFinished(evt -> {
-							new LoadingScreen(root,scene);
-							root.getChildren().removeAll(img, img1, bg, title, itemStart, itemOptions, itemExit,
-									contBtn, helpBtn, hbdr, fullScrn);
-						});
-						ft.play();
-						plays++;
-					});
+				ft.setOnFinished(evt -> {
+					new LoadingScreen();
+					root.getChildren().removeAll(img, img1, version, bg, title, itemStart, itemOptions, itemExit,
+							contBtn, helpBtn, hbdr, fullScrn);
+				});
+				ft.play();
+				plays++;
+			});
 
-					root.getChildren().addAll(img, img1, version, bg, title, itemStart, itemOptions, itemExit, contBtn,
-							helpBtn, hbdr, fullScrn, fadeRect);
-				}
-			} catch (IOException e) {
-
-				System.out.println("Cannot find Image");
-			}
+			root.getChildren().addAll(img, img1, version, bg, title, itemStart, itemOptions, itemExit, contBtn, helpBtn,
+					hbdr, fullScrn, fadeRect);
 		}
 	}
 
@@ -392,35 +515,34 @@ public class Raines_CSgame_5th extends Application {
 
 		int loaded = 0;
 
-		public LoadingScreen(Pane root,Scene scene) {
+		public LoadingScreen() {
 
-			try (InputStream is = Files.newInputStream(
-					Paths.get("C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/gooodmems2.jpg"))) {
-				try (InputStream is1 = Files.newInputStream(Paths.get(
-						"C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/713039e6-7c91-4704-8877-1be252deac99.png"))) {
+			Image is = new Image("file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/gooodmems2.jpg");
+			Image is1 = new Image(
+					"file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/713039e6-7c91-4704-8877-1be252deac99.png");
 
-					Rectangle fadeRect = new Rectangle(1100, 675);
-					fadeRect.setFill(Color.BLACK);
+			Rectangle fadeRect = new Rectangle(1100, 675);
+			fadeRect.setFill(Color.BLACK);
 
-					FadeTransition fadeout = new FadeTransition(Duration.seconds(0.60), fadeRect);
-					fadeout.setFromValue(1);
-					fadeout.setToValue(0);
-					fadeout.play();
+			FadeTransition fadeout = new FadeTransition(Duration.seconds(0.60), fadeRect);
+			fadeout.setFromValue(1);
+			fadeout.setToValue(0);
+			fadeout.play();
 
-					ImageView img = new ImageView(new Image(is));
-					img.setFitWidth(1100);
-					img.setFitHeight(675);
+			ImageView img = new ImageView(is);
+			img.setFitWidth(1100);
+			img.setFitHeight(675);
 
-					ImageView img1 = new ImageView(new Image(is1));
-					img1.setFitWidth(50);
-					img1.setFitHeight(50);
-					img1.setTranslateX(500);
-					img1.setTranslateY(200);
+			ImageView img1 = new ImageView(is1);
+			img1.setFitWidth(50);
+			img1.setFitHeight(50);
+			img1.setTranslateX(500);
+			img1.setTranslateY(200);
 
-					DropShadow dshadow = new DropShadow();
-					dshadow.setOffsetY(3.0);
-					dshadow.setOffsetX(3.0);
-					dshadow.setColor(Color.BLACK);
+			DropShadow dshadow = new DropShadow();
+			dshadow.setOffsetY(3.0);
+			dshadow.setOffsetX(3.0);
+			dshadow.setColor(Color.BLACK);
 
 //					Text text = new Text("Now Loading...");
 //					text.setFill(Color.WHITE);
@@ -431,28 +553,23 @@ public class Raines_CSgame_5th extends Application {
 //					text.setTranslateX(10);
 //					text.setTranslateY(30);
 
-					RotateTransition rotate = new RotateTransition(Duration.seconds(2), img1);
-					rotate.setFromAngle(0);
-					rotate.setToAngle(360);
-					rotate.setAutoReverse(true);
-					rotate.setCycleCount(4);
-					rotate.setAxis(new Point3D(5, 5, 5));
-					rotate.setOnFinished(evt -> {
+			RotateTransition rotate = new RotateTransition(Duration.seconds(2), img1);
+			rotate.setFromAngle(0);
+			rotate.setToAngle(360);
+			rotate.setAutoReverse(true);
+			rotate.setCycleCount(4);
+			rotate.setAxis(new Point3D(5, 5, 5));
+			rotate.setOnFinished(evt -> {
 
-						if (loaded == 0) {
-							new ShowChapter(root,scene);
-							loaded++;
-						}
-						root.getChildren().removeAll(img, img1, fadeRect);
-					});
-					rotate.play();
-
-					root.getChildren().addAll(img, img1,  fadeRect);
+				if (loaded == 0) {
+					new ShowChapter();
+					loaded++;
 				}
-			} catch (IOException e) {
+				root.getChildren().removeAll(img, img1, fadeRect);
+			});
+			rotate.play();
 
-				System.out.println("Cannot find Image");
-			}
+			root.getChildren().addAll(img, img1, fadeRect);
 		}
 	}
 
@@ -460,7 +577,7 @@ public class Raines_CSgame_5th extends Application {
 
 		int chapter = 1;
 
-		public ShowChapter(Pane root,Scene scene) {
+		public ShowChapter() {
 
 			Rectangle fadeRect = new Rectangle(1100, 675);
 			fadeRect.setFill(Color.BLACK);
@@ -487,7 +604,7 @@ public class Raines_CSgame_5th extends Application {
 			fadein.setAutoReverse(true);
 			fadein.setOnFinished(evt -> {
 				if (chapter == 1) {
-					new Game(root,scene);
+					new Game();
 					chapter++;
 				}
 				root.getChildren().removeAll(rect, text, fadeRect);
