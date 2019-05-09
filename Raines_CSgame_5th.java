@@ -33,7 +33,7 @@ public class Raines_CSgame_5th extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Battle Of Cast 1912!!");
 		primaryStage.setScene(scene);
-		new Menu();
+		new Game();
 		primaryStage.show();
 
 		Player CoolCat = new Player(10, 10, 100, null);
@@ -50,7 +50,6 @@ public class Raines_CSgame_5th extends Application {
 						CoolCat.setUp();
 					}
 				}
-
 			});
 		}
 	}
@@ -63,11 +62,12 @@ public class Raines_CSgame_5th extends Application {
 		int i1 = 0;
 		int i2 = 0;
 		int i3 = 0;
-		
+
 		public String[] text = new String[10];
 		public String[] text1 = new String[10];
 		public String[] text2 = new String[10];
 		public String[] text3 = new String[10];
+
 		public Game() {
 
 			Intro();
@@ -118,11 +118,6 @@ public class Raines_CSgame_5th extends Application {
 			gameText.setTranslateX(225);
 			gameText.setTranslateY(450);
 
-//					Rectangle charRect = new Rectangle(150, 75);
-//					charRect.setFill(Color.BLACK);
-//					charRect.setTranslateX(165);
-//					charRect.setTranslateY(450);
-
 			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 				@Override
@@ -132,14 +127,12 @@ public class Raines_CSgame_5th extends Application {
 
 						gameText.setText(text[i]);
 					}
-					if (i == 5) {
+					if (i == 4) {
 						Gameplay();
 						root.getChildren().removeAll(img, img1, bottomRect, gameText, fadeRect);
 						i = 0;
 					}
-
 				}
-
 			});
 			root.getChildren().addAll(img, img1, bottomRect, gameText, fadeRect);
 		}
@@ -147,7 +140,7 @@ public class Raines_CSgame_5th extends Application {
 		public void Gameplay() {
 
 			playingGameYes = true;
-			
+
 			text1[0] = "Welcome To Cast Tech i hope you enjoy your self.";
 			text1[1] = "Your first class of the day is Spainsh 2! ";
 			text1[2] = "You better get going you are almost late its 8:25!";
@@ -161,7 +154,7 @@ public class Raines_CSgame_5th extends Application {
 			ImageView img = new ImageView(is);
 			img.setFitWidth(1100);
 			img.setFitHeight(675);
-			
+
 			Rectangle bottomRect1 = new Rectangle(1100, 275);
 			bottomRect1.setFill(Color.BLACK);
 			bottomRect1.setOpacity(0.4);
@@ -171,14 +164,14 @@ public class Raines_CSgame_5th extends Application {
 			fadeout.setFromValue(1);
 			fadeout.setToValue(0);
 			fadeout.play();
-			
+
 			Text gameText = new Text();
-			gameText.setText(text[0]);
+			gameText.setText(text1[0]);
 			gameText.setFill(Color.WHITE);
 			gameText.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
 			gameText.setTranslateX(225);
 			gameText.setTranslateY(450);
-			
+
 			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 				@Override
@@ -186,29 +179,27 @@ public class Raines_CSgame_5th extends Application {
 					if (E.getCode() == KeyCode.ENTER) {
 						i1++;
 
-						gameText.setText(text[i1]);
+						gameText.setText(text1[i1]);
 					}
-					if (i1 == 5) {
-						Gameplay();
-						root.getChildren().removeAll(img, gameText, bottomRect1, fadeRect);
+					if (i1 == 4) {
+						Gameplay1();
+						root.getChildren().removeAll(img, bottomRect1, gameText, fadeRect);
 						i1 = 0;
 					}
-
 				}
-
 			});
-			root.getChildren().addAll(img, gameText, bottomRect1, fadeRect);
+			root.getChildren().addAll(img, bottomRect1, gameText, fadeRect);
 		}
+
 		public void Gameplay1() {
 
 			playingGameYes = true;
-			
-			text2[0] = "Welcome To Cast Tech i hope you enjoy your self.";
-			text2[1] = "Your first class of the day is Spainsh 2! ";
-			text2[2] = "You better get going you are almost late its 8:25!";
-			text2[3] = "Follow cast_memes";
 
-			Image is = new Image("file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/goodmemes3.jpg");
+			text2[0] = "I wonder were spainsh 2 is?";
+			text2[1] = "I think i might be on the 2nd floor. ";
+
+			Image is = new Image(
+					"file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/casttechfeature.jpg");
 			Rectangle fadeRect = new Rectangle(1100, 675);
 
 			fadeRect.setFill(Color.BLACK);
@@ -216,7 +207,7 @@ public class Raines_CSgame_5th extends Application {
 			ImageView img = new ImageView(is);
 			img.setFitWidth(1100);
 			img.setFitHeight(675);
-			
+
 			Rectangle bottomRect1 = new Rectangle(1100, 275);
 			bottomRect1.setFill(Color.BLACK);
 			bottomRect1.setOpacity(0.4);
@@ -226,14 +217,14 @@ public class Raines_CSgame_5th extends Application {
 			fadeout.setFromValue(1);
 			fadeout.setToValue(0);
 			fadeout.play();
-			
+
 			Text gameText = new Text();
-			gameText.setText(text[0]);
+			gameText.setText(text2[0]);
 			gameText.setFill(Color.WHITE);
 			gameText.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
 			gameText.setTranslateX(225);
 			gameText.setTranslateY(450);
-			
+
 			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 				@Override
@@ -241,29 +232,28 @@ public class Raines_CSgame_5th extends Application {
 					if (E.getCode() == KeyCode.ENTER) {
 						i2++;
 
-						gameText.setText(text[i2]);
+						gameText.setText(text2[i2]);
 					}
-					if (i2 == 5) {
-						Gameplay();
-						root.getChildren().removeAll(img, gameText, bottomRect1, fadeRect);
+					if (i2 == 2) {
+						Gameplay2();
+						root.getChildren().removeAll(img, bottomRect1, gameText, fadeRect);
 						i2 = 0;
 					}
-
 				}
-
 			});
-			root.getChildren().addAll(img, gameText, bottomRect1, fadeRect);
+			root.getChildren().addAll(img, bottomRect1, gameText, fadeRect);
 		}
+
 		public void Gameplay2() {
 
 			playingGameYes = true;
 			
-			text3[0] = "Welcome To Cast Tech i hope you enjoy your self.";
-			text3[1] = "Your first class of the day is Spainsh 2! ";
-			text3[2] = "You better get going you are almost late its 8:25!";
-			text3[3] = "Follow cast_memes";
+			text3[0] = "Oh there it is i think i found it.";
+			text3[1] = "Hello this is your spainsh 2 class. ";
+			text3[2] = "You are a littel bit late!";
+			text3[3] = "Do you want to go on to your next class?";
 
-			Image is = new Image("file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/goodmemes3.jpg");
+			Image is = new Image("file:///C:/Users/Abram/eclipse-workspace/Raines_CSgame_5th/src/pics/df027cee-6090-4a36-a3f8-e14ead0631f6-original.jpeg");
 			Rectangle fadeRect = new Rectangle(1100, 675);
 
 			fadeRect.setFill(Color.BLACK);
@@ -283,7 +273,7 @@ public class Raines_CSgame_5th extends Application {
 			fadeout.play();
 			
 			Text gameText = new Text();
-			gameText.setText(text[0]);
+			gameText.setText(text3[0]);
 			gameText.setFill(Color.WHITE);
 			gameText.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
 			gameText.setTranslateX(225);
@@ -296,20 +286,62 @@ public class Raines_CSgame_5th extends Application {
 					if (E.getCode() == KeyCode.ENTER) {
 						i3++;
 
-						gameText.setText(text[i3]);
+						gameText.setText(text3[i3]);
 					}
-					if (i3 == 5) {
-						Gameplay();
-						root.getChildren().removeAll(img, gameText, bottomRect1, fadeRect);
-						i3 = 0;
+					if (i3 == 4) {
+						
+						ChoiceButton YesBtn = new ChoiceButton("Yes");
+						YesBtn.setTranslateX(10);
+						YesBtn.setTranslateY(650);
+						
+						ChoiceButton NoBtn = new ChoiceButton("No");
+						NoBtn.setTranslateX(70);
+						NoBtn.setTranslateY(650);
+						
+						YesBtn.setOnMouseClicked(event -> {
+							Win();
+							root.getChildren().removeAll(img, bottomRect1, gameText, fadeRect, NoBtn, YesBtn);
+						});
+						NoBtn.setOnMouseClicked(event -> {
+							
+							Lose();
+							root.getChildren().removeAll(img, bottomRect1, gameText, fadeRect, NoBtn, YesBtn);
+						});
+						
+//						Lose(); //gameplay();
+//						root.getChildren().removeAll(img, bottomRect1, gameText, fadeRect);
+//						i3 = 0;
+						
+						root.getChildren().addAll(YesBtn, NoBtn);
 					}
-
 				}
-
 			});
-			root.getChildren().addAll(img, gameText, bottomRect1, fadeRect);
+			root.getChildren().addAll(img, bottomRect1, gameText, fadeRect);
 		}
-		
+
+		public void Lose() {
+
+			Text text = new Text("You lose lmao");
+			text.setFill(Color.BLACK);
+			text.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
+			text.setTranslateX(225);
+			text.setTranslateY(450);
+
+			root.getChildren().addAll(text);
+
+		}
+
+		public void Win() {
+
+			Text text = new Text("You Win at school");
+			text.setFill(Color.BLACK);
+			text.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 30));
+			text.setTranslateX(225);
+			text.setTranslateY(450);
+
+			root.getChildren().addAll(text);
+
+		}
 	}
 
 	class Player extends Rectangle {
@@ -722,6 +754,43 @@ public class Raines_CSgame_5th extends Application {
 	private static class HelpButton extends StackPane {
 
 		public HelpButton(String name) {
+
+			Rectangle bg = new Rectangle(50, 20);
+			bg.setFill(Color.WHITE);
+			bg.setOpacity(0.2);
+
+			Text text = new Text(name);
+			text.setFill(Color.BLACK);
+			text.setFont(Font.font("Tw Cen MT Condensed", FontWeight.SEMI_BOLD, 12));
+
+			setAlignment(Pos.CENTER);
+			getChildren().addAll(bg, text);
+
+			setOnMouseEntered(event -> {
+
+				text.setFill(Color.DARKGREY);
+			});
+
+			setOnMouseExited(event -> {
+
+				text.setFill(Color.BLACK);
+			});
+
+			setOnMousePressed(event -> {
+
+				bg.setFill(Color.PINK);
+			});
+
+			setOnMouseReleased(event -> {
+
+				bg.setFill(Color.WHITE);
+			});
+		}
+	}
+
+	private static class ChoiceButton extends StackPane {
+
+		public ChoiceButton(String name) {
 
 			Rectangle bg = new Rectangle(50, 20);
 			bg.setFill(Color.WHITE);
